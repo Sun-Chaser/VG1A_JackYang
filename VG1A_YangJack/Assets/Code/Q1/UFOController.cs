@@ -27,16 +27,16 @@ namespace Q1
                 transform.position += new Vector3(0, -0.2f, 0);
             }
             
-            // Move Left
+            // Move Right
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                transform.position += new Vector3(-0.2f, 0, 0);
+                transform.position += new Vector3(0.2f, 0, 0);
             }
             
-            // Move Right
+            // Move Left
             if (Input.GetKey(KeyCode.LeftArrow)) 
             {
-                transform.position += new Vector3(0.2f, 0, 0);
+                transform.position += new Vector3(-0.2f, 0, 0);
             }
         }
     }
