@@ -23,8 +23,8 @@ namespace SpaceShooter
         // Update is called once per frame
         void Update()
         {
-            float acceleration = 1f;
-            float maxSpeed = 2f;
+            float acceleration = GameController.instance.missileSpeed / 2f;
+            float maxSpeed = GameController.instance.missileSpeed;
             
             ChooseNearestTarget();
             if (target != null)
@@ -78,6 +78,8 @@ namespace SpaceShooter
                     Quaternion.identity
                 );
                 Destroy(explosion, 0.25f);
+                
+                GameController.instance.EarnPoints(10);
             }
         }
     }
