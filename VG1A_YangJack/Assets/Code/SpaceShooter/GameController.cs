@@ -56,7 +56,7 @@ namespace SpaceShooter
             timeElapsed += Time.deltaTime;
             
             // Computer Asteroid Delay
-            float decreaseDelayOverTime = maxAsteroidDelay - ((asteroidDelay - minAsteroidDelay) / 30f * timeElapsed);
+            float decreaseDelayOverTime = maxAsteroidDelay - ((maxAsteroidDelay - minAsteroidDelay) / 30f * timeElapsed);
             asteroidDelay = Math.Clamp(decreaseDelayOverTime, minAsteroidDelay, maxAsteroidDelay);
 
             UpdateDisplay();
