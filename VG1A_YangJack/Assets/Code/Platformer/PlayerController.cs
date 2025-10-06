@@ -1,27 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace Platformer
 {
     public class PlayerController : MonoBehaviour
     {
+        public static PlayerController instance;
+        
         // Outlet
         private Rigidbody2D _rigidbody2D;
         public Transform aimPivot;
         public GameObject projectilePrefab;
         SpriteRenderer sprite;
         Animator animator;
+        public TMP_Text scoreUI;
         
         // State Tracking
         public int jumpsLeft;
+        public int score;
+        public bool isPaused;
         
         // Methods
+        void Awake()
+        {
+            instance = this;
+        }
+        
         void Start()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             sprite = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            
+            score = PlayerPrefs.GetInt("Score");
         }
 
         void FixedUpdate()
@@ -41,6 +54,14 @@ namespace Platformer
         // Update is called once per frame
         void Update()
         {
+            // Update UI
+            scoreUI.text = score.ToString();
+
+            if (isPaused)
+            {
+                return;
+            }
+            
             // Move Player Left
             if (Input.GetKey(KeyCode.A))
             {
@@ -83,6 +104,12 @@ namespace Platformer
                 }
             }
             animator.SetInteger("JumpsLeft", jumpsLeft);
+            
+            // Menu
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                MenuController.instance.Show();
+            }
         }
 
         void OnCollisionStay2D(Collision2D other)
@@ -107,6 +134,12 @@ namespace Platformer
                     }
                 }
             }
+        }
+
+        public void ResetScore()
+        {
+            score = 0;
+            PlayerPrefs.DeleteKey("Score");
         }
     }
 }
