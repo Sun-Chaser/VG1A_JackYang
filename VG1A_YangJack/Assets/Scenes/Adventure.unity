@@ -4486,6 +4486,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Breakable
       objectReference: {fileID: 0}
+    - target: {fileID: 8937048699121759912, guid: 9cf798f82673548129c35883a16840ee, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937048699121759912, guid: 9cf798f82673548129c35883a16840ee, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
